@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>足球竞彩 · 站点介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #f2f4f6;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1e2a3a;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+    .page-wrap {
+      max-width: 1024px;
+      margin: 0 auto;
+    }
+    /* hero 横幅 */
+    .hero {
+      background: linear-gradient(145deg, #eef1f5 0%, #d9e0e8 100%);
+      padding: 3.5rem 2.5rem;
+      border-radius: 24px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+      margin-bottom: 2.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+      color: #152b3c;
+    }
+    .hero .sub {
+      font-size: 1.05rem;
+      color: #3f5568;
+      max-width: 680px;
+      margin: 0 auto;
+      font-weight: 380;
+      padding: 0 0.5rem;
+    }
+    .hero .sub a {
+      color: #22668d;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dotted #a0b7cc;
+    }
+    .hero .sub a:hover {
+      border-bottom: 2px solid #22668d;
+    }
+    /* 背景说明卡片 */
+    .context-card {
+      background: #ffffffd9;
+      backdrop-filter: blur(2px);
+      padding: 2rem 2.2rem;
+      border-radius: 20px;
+      border: 1px solid #e6ebf0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 0 #ffffff inset;
+      margin-bottom: 2.2rem;
+    }
+    .context-card h2 {
+      font-size: 1.5rem;
+      font-weight: 450;
+      margin-bottom: 1rem;
+      color: #1b3a4f;
+      border-left: 4px solid #5d7b96;
+      padding-left: 1rem;
+    }
+    .context-card p {
+      margin-bottom: 1rem;
+      color: #2e4053;
+    }
+    .context-card p:last-child {
+      margin-bottom: 0;
+    }
+    /* 三段自然介绍 — 栅格卡片 */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.6rem;
+      margin-bottom: 2.5rem;
+    }
+    .info-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.8rem 1.6rem 1.8rem 1.6rem;
+      border: 1px solid #e0e6ec;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.01);
+      transition: box-shadow 0.2s ease;
+    }
+    .info-card:hover {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
+    }
+    .info-card .card-label {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      color: #5f788c;
+      background: #eef2f7;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      margin-bottom: 0.9rem;
+      border: 1px solid #d3dde8;
+    }
+    .info-card h3 {
+      font-size: 1.2rem;
+      font-weight: 470;
+      margin-bottom: 0.9rem;
+      color: #1c384c;
+    }
+    .info-card p {
+      font-size: 0.95rem;
+      color: #324c60;
+      margin-bottom: 0.6rem;
+    }
+    .info-card .link-embed {
+      margin-top: 0.6rem;
+      font-size: 0.95rem;
+    }
+    .info-card .link-embed a {
+      color: #22668d;
+      text-decoration: none;
+      font-weight: 450;
+      border-bottom: 1px solid #b6cfdf;
+    }
+    .info-card .link-embed a:hover {
+      border-bottom: 2px solid #22668d;
+    }
+    /* FAQ 摘要 */
+    .faq-mini {
+      background: #ffffffd9;
+      border-radius: 20px;
+      padding: 2rem 2.2rem;
+      border: 1px solid #e6ebf0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      margin-bottom: 2.2rem;
+    }
+    .faq-mini h2 {
+      font-size: 1.3rem;
+      font-weight: 450;
+      margin-bottom: 1.2rem;
+      color: #1b3a4f;
+    }
+    .faq-item {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #e3eaf0;
+      padding-bottom: 0.8rem;
+    }
+    .faq-item:last-child {
+      border-bottom: 0;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .faq-q {
+      font-weight: 490;
+      color: #1e3e56;
+      margin-bottom: 0.2rem;
+      font-size: 1rem;
+    }
+    .faq-a {
+      color: #3c586e;
+      font-size: 0.94rem;
+      padding-left: 0.2rem;
+    }
+    .faq-a a {
+      color: #22668d;
+      text-decoration: none;
+      border-bottom: 1px dotted #b1c8db;
+    }
+    .faq-a a:hover {
+      border-bottom: 1px solid #22668d;
+    }
+    /* 页尾访问提示 */
+    .footer-note {
+      background: #e2e9f1;
+      border-radius: 36px;
+      padding: 1.6rem 2rem;
+      text-align: center;
+      border: 1px solid #cbd8e4;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      margin-top: 0.8rem;
+    }
+    .footer-note p {
+      font-size: 1rem;
+      color: #1d384e;
+      margin-bottom: 0.3rem;
+    }
+    .footer-note .big-link {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+    .footer-note .big-link a {
+      color: #1a4f6e;
+      text-decoration: none;
+      border-bottom: 2px solid #9ab3c9;
+      padding-bottom: 2px;
+      transition: border-color 0.15s;
+    }
+    .footer-note .big-link a:hover {
+      border-bottom: 2px solid #1a4f6e;
+    }
+    .footer-note .foot-sub {
+      font-size: 0.88rem;
+      color: #42677f;
+      margin-top: 0.35rem;
+    }
+    @media (max-width: 600px) {
+      body { padding: 1.2rem 0.8rem; }
+      .hero { padding: 2rem 1.2rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .context-card, .faq-mini { padding: 1.5rem; }
+      .cards-grid { gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+  <!-- hero 横幅 -->
+  <div class="hero">
+    <h1>足球竞彩 · 信息与参考</h1>
+    <div class="sub">
+      围绕竞彩足球的规则、数据与站点概况，提供结构化的内容聚合。<br>
+      本文介绍基于 <a href="https://cn-ssl-footballbet.com">足球竞彩</a> 平台背景展开。
+    </div>
+  </div>
+
+  <!-- 背景说明 -->
+  <div class="context-card">
+    <h2>站点背景与定位</h2>
+    <p><strong>cn-ssl-footballbet.com</strong> 是一个聚焦足球竞彩领域的信息站点，面向对竞彩足球有查阅需求的用户。站点内容涵盖竞彩基础知识、常见玩法说明及数据参考，整体定位为辅助理解与信息汇集，不涉及直接投注引导或结果承诺。</p>
+    <p>从页面架构来看，其设计初衷在于将足球竞彩相关的规则框架、赛事分类以及若干实用提示整合在统一入口下。用户可通过主页快速了解竞彩的基本逻辑，并依据自身需要进一步浏览细分页面。</p>
+  </div>
+
+  <!-- 三段自然介绍（卡片） -->
+  <div class="cards-grid">
+    <div class="info-card">
+      <span class="card-label">一 · 内容构成</span>
+      <h3>竞彩规则与赛事分类</h3>
+      <p>站点归纳了常见的竞彩足球玩法，如胜平负、让球、比分等基础选项，并附带简要的术语说明。赛事部分按联赛、杯赛归类，提供对照参考。对于刚接触竞彩的用户，这些内容可帮助建立基本认知框架。</p>
+      <div class="link-embed">相关详情可在 <a href="https://cn-ssl-footballbet.com">足球竞彩</a> 页面中进一步查阅。</div>
+    </div>
+    <div class="info-card">
+      <span class="card-label">二 · 数据与参考</span>
+      <h3>统计摘要与观察维度</h3>
+      <p>页面中嵌入了部分球队近期表现、交锋记录等数据模块，用于辅助用户进行信息比对。所有数据均来自公开赛事统计，站点不进行预测、不提供投注建议，仅作为客观信息陈列。</p>
+      <div class="link-embed">数据源与更新方式可参考 <a href="https://cn-ssl-footballbet.com">足球竞彩</a> 对应板块。</div>
+    </div>
+    <div class="info-card">
+      <span class="card-label">三 · 可信说明</span>
+      <h3>信息原则与免责范畴</h3>
+      <p>站点内容均基于可查证的公开材料，不包含内幕消息或误导性陈述。运营方不鼓励过度投注，且明确声明所有信息仅供个人参考。访问者应当依据自身判断，理性看待竞彩活动。</p>
+      <div class="link-embed">完整声明可见于 <a href="https://cn-ssl-footballbet.com">足球竞彩</a> 页面底部。</div>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-mini">
+    <h2>常见问题摘要</h2>
+    <div class="faq-item">
+      <div class="faq-q">▸ 该站点是否提供实时赔率？</div>
+      <div class="faq-a">不直接提供动态赔率，主要陈列固定规则与历史数据参考。实时变动信息请通过授权渠道获取。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">▸ 竞彩足球的让球规则如何理解？</div>
+      <div class="faq-a">让球是平衡双方实力差距的设定，站点内以表格形式列出常见让球数与对应结果关系，可前往 <a href="https://cn-ssl-footballbet.com">足球竞彩</a> 帮助页面查看。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">▸ 内容更新频率是怎样的？</div>
+      <div class="faq-a">规则、术语等固定内容长期有效；赛事数据随赛季进行不定期刷新。建议定期浏览站点获取最新版本。</div>
+    </div>
+  </div>
+
+  <!-- 页尾访问提示 -->
+  <div class="footer-note">
+    <p>如需浏览完整内容，可前往站点主页</p>
+    <div class="big-link"><a href="https://cn-ssl-footballbet.com">足球竞彩</a></div>
+    <p class="foot-sub">信息整合 · 客观参考 · 理性参与</p>
+  </div>
+</div>
+</body>
+</html>
