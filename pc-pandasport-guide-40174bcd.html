@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>熊猫体育 · 日常查询与阅读参考</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #f3f4f6;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: #2d3a4b;
+      line-height: 1.7;
+      padding: 2rem 1rem;
+    }
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    /* hero 模块 */
+    .hero {
+      background: #ffffffea;
+      backdrop-filter: blur(2px);
+      padding: 2.8rem 2.2rem;
+      border-radius: 28px;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e7eaee;
+      margin-bottom: 2.2rem;
+      transition: box-shadow 0.2s;
+    }
+    .hero h1 {
+      font-size: 2.3rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: #1f2a3a;
+      margin-bottom: 0.6rem;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 680px;
+      color: #4e5c6c;
+      font-weight: 350;
+    }
+    /* 卡片通用 */
+    .card-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin-bottom: 2.4rem;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.8rem 1.8rem 2rem;
+      flex: 1 1 280px;
+      border: 1px solid #e4e8ed;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.02);
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+    .card:hover {
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+      transform: translateY(-3px);
+    }
+    .card h2, .card h3 {
+      font-weight: 470;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #1a2634;
+      border-bottom: 1px solid #edf0f4;
+      padding-bottom: 0.45rem;
+    }
+    .card p, .card li {
+      font-size: 0.98rem;
+      color: #3a4a5a;
+    }
+    .card ul {
+      padding-left: 1.3rem;
+      list-style: none;
+    }
+    .card li {
+      margin-bottom: 0.6rem;
+      position: relative;
+      padding-left: 1.1rem;
+    }
+    .card li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: #8899aa;
+      font-weight: 700;
+    }
+    /* 场景 + 建议 双列布局 */
+    .double-shelf {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin-bottom: 2.4rem;
+    }
+    .shelf-item {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.8rem 1.8rem 2rem;
+      flex: 1 1 300px;
+      border: 1px solid #e4e8ed;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.02);
+    }
+    .shelf-item h3 {
+      font-weight: 460;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: #1a2634;
+    }
+    .shelf-item p {
+      font-size: 0.98rem;
+      color: #3a4a5a;
+    }
+    .shelf-item .soft-highlight {
+      background: #f5f8fc;
+      border-left: 3px solid #b8c9dd;
+      padding: 0.6rem 1rem;
+      margin: 1rem 0 0;
+      border-radius: 0 12px 12px 0;
+      font-size: 0.95rem;
+    }
+    /* 引用/提示条 */
+    .note-box {
+      background: #f7fafd;
+      border: 1px solid #dce3ec;
+      border-radius: 20px;
+      padding: 1.2rem 2rem;
+      margin: 1.8rem 0 2.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem 2rem;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.01);
+    }
+    .note-box span {
+      font-weight: 360;
+      color: #4a5a6e;
+    }
+    .note-box .tag {
+      background: #e0e6ef;
+      border-radius: 40px;
+      padding: 0.25rem 1rem;
+      font-size: 0.85rem;
+      color: #2c3e55;
+      white-space: nowrap;
+    }
+    /* faq微摘要 */
+    .faq-mini {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.8rem 2rem 2.2rem;
+      border: 1px solid #e4e8ed;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.02);
+      margin-bottom: 2.2rem;
+    }
+    .faq-mini h3 {
+      font-weight: 450;
+      font-size: 1.3rem;
+      margin-bottom: 1.1rem;
+      color: #1a2634;
+    }
+    .faq-mini details {
+      margin-bottom: 0.9rem;
+      border-bottom: 1px solid #edf0f4;
+      padding-bottom: 0.7rem;
+    }
+    .faq-mini summary {
+      font-weight: 430;
+      cursor: pointer;
+      color: #2a3b4f;
+      padding: 0.3rem 0;
+      font-size: 1rem;
+    }
+    .faq-mini summary::-webkit-details-marker {
+      color: #a0b2c4;
+    }
+    .faq-mini details p {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      color: #475a6e;
+      padding-left: 0.8rem;
+      border-left: 2px solid #dce3ec;
+    }
+    /* 链接风格 */
+    a {
+      color: #2b5f8c;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    a:hover {
+      border-bottom: 1px solid #2b5f8c;
+      color: #123a5c;
+    }
+    .inline-link {
+      font-weight: 440;
+    }
+    /* 页尾 */
+    .footer-note {
+      text-align: center;
+      font-size: 0.88rem;
+      color: #6a7b8c;
+      border-top: 1px solid #dbe1e9;
+      padding-top: 1.5rem;
+      margin-top: 1rem;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #e1e7ef;
+      margin: 1rem 0;
+    }
+    @media (max-width: 600px) {
+      body { padding: 1rem 0.8rem; }
+      .hero { padding: 2rem 1.2rem; }
+      .hero h1 { font-size: 1.9rem; }
+      .card-grid { gap: 1.2rem; }
+      .card { padding: 1.5rem 1.2rem; }
+      .double-shelf { gap: 1.2rem; }
+      .note-box { flex-direction: column; align-items: flex-start; padding: 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- hero 摘要式 -->
+  <div class="hero">
+    <h1>熊猫体育 · 对照与延伸</h1>
+    <p>一个偏向日常查询、信息比照和背景阅读的轻量级聚合页面。内容基于公开资料与使用体感，不构成任何形式的投资、比赛或行为建议。</p>
+  </div>
+
+  <!-- 亮点卡片区：三个方向 -->
+  <div class="card-grid">
+    <div class="card">
+      <h2>结构 · 一目了然</h2>
+      <p>界面分区清晰，资讯、数据、赛程归类明确。浏览者可以通过横向对照快速定位感兴趣的部分，无需反复跳转。对于希望建立日常查阅习惯的人而言，这种低干扰的布局降低了认知负担。</p>
+    </div>
+    <div class="card">
+      <h2>信息 · 延伸阅读</h2>
+      <p>除了即时更新的动态外，平台也提供了一定比例的回顾性内容与深度解读。适合在阅读新闻或观看比赛后，作为补充视角进行对照。延伸阅读的篇幅克制，不喧宾夺主。</p>
+    </div>
+    <div class="card">
+      <h2>体验 · 克制留白</h2>
+      <p>视觉密度中等偏疏，字体行距经过调整，避免满屏拥挤。对于需要同时打开多个页面作对比的用户，这种空间感能减轻视觉疲劳，让注意力更持久地停留在信息本身。</p>
+    </div>
+  </div>
+
+  <!-- 场景 + 使用建议（双列） -->
+  <div class="double-shelf">
+    <div class="shelf-item">
+      <h3>日常查询场景</h3>
+      <p>当你需要快速核实某项数据、对比不同阶段的统计，或者只是想在碎片时间里扫一眼更新，一个条理清晰的页面会节省不少时间。我不止一次在等车、午休时打开 <a href="https://pc-pandasport.com" class="inline-link">熊猫体育</a>，对照几个数字或摘要，然后关掉——没什么负担。这种“查完就走”的体验，依赖于信息的组织逻辑，而不是花哨的动效。</p>
+      <div class="soft-highlight">⚬ 适合：赛前预览、赛后核对、历史数据回顾。</div>
+    </div>
+    <div class="shelf-item">
+      <h3>使用建议</h3>
+      <p>可以把它当作一个信息锚点：先在自己的笔记或表格里整理要点，再打开页面做交叉验证；或者反过来，先浏览平台上的内容梗概，再回到自己的记录里补充细节。建议同时保留一到两个其他来源作为参照，多方比较总是更稳妥。此外，留意内容的标注时间，避免混淆旧闻与新闻。</p>
+      <div class="soft-highlight">⚬ 建议搭配：本地笔记 / 电子表格 / 其他资讯平台。</div>
+    </div>
+  </div>
+
+  <!-- 可信但克制的访问说明 -->
+  <div class="note-box">
+    <span>🧾 访问说明</span>
+    <span class="tag">非官方立场</span>
+    <span class="tag">仅作参考</span>
+    <span style="flex:1; min-width:180px;">本页面仅为个人使用经验与观察汇总，不代表平台官方观点。所有信息请以实际页面显示为准。数据与内容可能随时调整，建议定期核对。</span>
+  </div>
+
+  <!-- FAQ 摘要 （克制语气）-->
+  <div class="faq-mini">
+    <h3>一些常见自问 · 摘要</h3>
+    <details>
+      <summary>页面上的信息是否实时更新？</summary>
+      <p>大部分动态内容（如比分、赛程）保持较高更新频率，但具体延时受网络与数据源影响。如果对时效性有严格要求，建议同时参考官方实时渠道。</p>
+    </details>
+    <details>
+      <summary>延伸阅读文章的可信度如何？</summary>
+      <p>文章中通常包含署名或来源标注，可作为进一步查证的起点。任何第三方观点都不应替代独立判断，尤其在涉及数据解读时多加留意。</p>
+    </details>
+    <details>
+      <summary>是否需要注册或登录？</summary>
+      <p>浏览基本内容一般无需注册。部分深度功能或个性化设置可能要求登录账户，具体以平台实际规则为准。注意保护个人隐私。</p>
+    </details>
+    <details>
+      <summary>如何与其他平台对照使用？</summary>
+      <p>建议以本页面为参照之一，同时打开一到两个同类型页面并列对比，重点关注数据定义、统计口径和更新时间，差异往往来源于这些细节。</p>
+    </details>
+  </div>
+
+  <!-- 再次嵌入链接（自然出现在句子中），呼应前文但不重复用词 -->
+  <p style="font-size:0.95rem; color:#4b5e72; margin-bottom:0.3rem; padding:0 0.2rem;">
+    如果你希望进一步探索，可以直接在浏览器中打开 <a href="https://pc-pandasport.com">熊猫体育</a>，
+    将其作为日常信息拼图里的一块参考。保持对照习惯，比依赖单一来源更可靠。
+  </p>
+
+  <hr>
+  <div class="footer-note">
+    内容整理 · 个人阅读参考 · 访问时请留意页面实际状态
+  </div>
+
+</div>
+</body>
+</html>
